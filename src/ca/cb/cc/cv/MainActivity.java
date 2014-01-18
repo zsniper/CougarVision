@@ -1,4 +1,4 @@
-package ca.cbcc.cv;
+package ca.cb.cc.cv;
 
 import android.os.Bundle;
 import android.app.Activity;
