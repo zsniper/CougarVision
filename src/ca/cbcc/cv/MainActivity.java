@@ -1,4 +1,4 @@
-package com.cbcodingclub.cougarvision;
+package ca.cbcc.cv;
 
 import android.os.Bundle;
 import android.app.Activity;
