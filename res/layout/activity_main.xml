@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:choiceMode="singleChoice"
-        android:divider="@color/list_divider"
+        android:divider="@drawable/list_divider"
         android:dividerHeight="1dp"       
         android:listSelector="@drawable/list_selector"
         android:background="@color/list_background"/>
