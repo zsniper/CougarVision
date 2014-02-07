@@ -26,7 +26,7 @@ public TextViewF(Context context) {
 
 public void init() {
 
-    Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/opensans.ttf");
+    Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/roboto_light.ttf");
     setTypeface(tf ,1);
 
 }
