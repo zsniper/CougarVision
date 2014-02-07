@@ -15,18 +15,18 @@
         android:src="@drawable/ic_home"
         android:layout_centerVertical="true" />
  
-    <TextView
+   <ca.cb.cc.cv.views.TextViewF
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_toRightOf="@id/icon"
         android:minHeight="?android:attr/listPreferredItemHeightSmall"
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
-        android:textColor="@color/list_item_title"
+        android:textColor="@color/menu_item_title"
         android:gravity="center_vertical"
         android:paddingRight="40dp"/>
      
-    <TextView android:id="@+id/counter"
+    <ca.cb.cc.cv.views.TextViewF android:id="@+id/counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/counter_bg"

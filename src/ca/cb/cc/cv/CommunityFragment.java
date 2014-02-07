@@ -1,6 +1,5 @@
 package ca.cb.cc.cv;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;

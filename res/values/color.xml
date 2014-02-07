@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="list_item_title">#696969</color>
-    <color name="list_background">#eaeaea</color>
-    <color name="list_background_pressed">#dfdfdf</color>
-    <color name="list_divider">#dfdfdf</color>
+    
+    <color name="menu_item_title">#696969</color>
+    <color name="menu_background">#ccffffff</color>
+    <color name="menu_item_background">#00ffffff</color>
+    <color name="menu_background_pressed">#0a000000</color>
+    <color name="list_divider">#0c000000</color>
+    <color name="menu_scrim">#30000000</color>
+    
     <color name="counter_text_bg">#07c</color>
     <color name="counter_text_color">#fff</color>
-    <color name="actionbar_background">#00509c</color>
+    
+    <color name="actionbar_background">#07d</color>
+    <color name="actionbar_border">#f21166cc</color>
     <color name="actionbar_text">#fff</color>
+    
 </resources>

@@ -4,20 +4,26 @@ import java.util.ArrayList;
 
 import ca.cb.cc.cv.adapter.NavDrawerListAdapter;
 import ca.cb.cc.cv.model.NavDrawerItem;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
     private DrawerLayout mDrawerLayout;
@@ -38,7 +44,16 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
  
+        // change actionbar font
+        int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+        TextView actionBarTitleView = (TextView) getWindow().findViewById(actionBarTitle);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/opensans.ttf");
+        if(actionBarTitleView != null){
+            actionBarTitleView.setTypeface(font);
+        }
+        
         mTitle = mDrawerTitle = getTitle();
+        getActionBar().setTitle(mTitle);
  
         // load slide menu items
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
@@ -48,6 +63,7 @@ public class MainActivity extends Activity {
                 .obtainTypedArray(R.array.nav_drawer_icons);
  
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout.setScrimColor(getResources().getColor(R.color.menu_scrim));
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
  
         navDrawerItems = new ArrayList<NavDrawerItem>();
@@ -74,7 +90,7 @@ public class MainActivity extends Activity {
         mDrawerList.setAdapter(adapter);
  
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
+        //getActionBar().setHomeButtonEnabled(true);
         
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.ic_drawer,
@@ -97,6 +113,7 @@ public class MainActivity extends Activity {
             displayView(0);
         }
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
+        
     }
  
     /**
@@ -153,14 +170,13 @@ public class MainActivity extends Activity {
         }
    
     }
- 
-
+    
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
- 
+	
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
@@ -188,7 +204,8 @@ public class MainActivity extends Activity {
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
-        getActionBar().setTitle(mTitle);
+        ActionBar actionBar = getActionBar();
+        actionBar.setTitle(mTitle);
     }
  
  

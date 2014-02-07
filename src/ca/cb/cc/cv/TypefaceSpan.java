@@ -25,7 +25,7 @@ public class TypefaceSpan extends MetricAffectingSpan {
           sTypefaceCache.put(typefaceName, mTypeface);
       }
   }
-
+  
   @Override
   public void updateMeasureState(TextPaint p) {
       p.setTypeface(mTypeface);
