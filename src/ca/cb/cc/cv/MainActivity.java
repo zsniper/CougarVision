@@ -1,9 +1,11 @@
 package ca.cb.cc.cv;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ca.cb.cc.cv.adapter.NavDrawerListAdapter;
 import ca.cb.cc.cv.model.NavDrawerItem;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
@@ -15,8 +17,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,17 +26,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private CharSequence mDrawerTitle;
-    private CharSequence mTitle;
+	
+    private DrawerLayout drawerLayout;
+    private ListView drawerList;
+    private ActionBarDrawerToggle drawerToggle;
+    private CharSequence drawerTitle;
+    private CharSequence title;
  
     // slide menu items
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
  
-    private ArrayList<NavDrawerItem> navDrawerItems;
+    private List<NavDrawerItem> navDrawerItems;
     private NavDrawerListAdapter adapter;
  
     @Override
@@ -52,8 +53,8 @@ public class MainActivity extends Activity {
             actionBarTitleView.setTypeface(font);
         }
         
-        mTitle = mDrawerTitle = getTitle();
-        getActionBar().setTitle(mTitle);
+        title = drawerTitle = getTitle();
+        getActionBar().setTitle(title);
  
         // load slide menu items
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
@@ -62,18 +63,18 @@ public class MainActivity extends Activity {
         navMenuIcons = getResources()
                 .obtainTypedArray(R.array.nav_drawer_icons);
  
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerLayout.setScrimColor(getResources().getColor(R.color.menu_scrim));
-        mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout.setScrimColor(getResources().getColor(R.color.menu_scrim));
+        drawerList = (ListView) findViewById(R.id.list_slidermenu);
  
         navDrawerItems = new ArrayList<NavDrawerItem>();
  
         // Home
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
         // Events
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1), true, "5")); //someone script the counters por favor
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1), true, 5)); //someone script the counters por favor
         // CougarVision
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1), true, "12"));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1), true, 12));
         // Communities
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
         // People (idk)
@@ -87,84 +88,76 @@ public class MainActivity extends Activity {
         // setting the menu list adapter
         adapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
-        mDrawerList.setAdapter(adapter);
+        drawerList.setAdapter(adapter);
  
         getActionBar().setDisplayHomeAsUpEnabled(true);
         //getActionBar().setHomeButtonEnabled(true);
         
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 R.drawable.ic_drawer,
                 R.string.app_name,
                 R.string.app_name
         ){
             public void onDrawerClosed(View view) {
-                getActionBar().setTitle(mTitle);
+                getActionBar().setTitle(title);
                 invalidateOptionsMenu();
             }
  
             public void onDrawerOpened(View drawerView) {
-                getActionBar().setTitle(mDrawerTitle);
+                getActionBar().setTitle(drawerTitle);
                 invalidateOptionsMenu();
             }
         };
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        drawerLayout.setDrawerListener(drawerToggle);
  
         if (savedInstanceState == null) {
             displayView(0);
         }
-        mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-        
+        drawerList.setOnItemClickListener(new ListView.OnItemClickListener() {
+        	
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // display view for selected nav drawer item
+                displayView(position);
+            }
+        	
+        });
     }
- 
-    /**
-     * Slide menu item click listener
-     * */
-    private class SlideMenuClickListener implements
-            ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position,
-                long id) {
-            // display view for selected nav drawer item
-            displayView(position);
-        }
-    }
- 
-
-//Display main fragments of CV app, add/remove/change as necessary
-
+    
+    //Display main fragments of CV app, add/remove/change as necessary
     private void displayView(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
         switch (position) {
-        case 0:
-            fragment = new HomeFragment();
-            break;
-        case 1:
-            fragment = new EventsFragment();
-            break;
-        case 2:
-            fragment = new CVFragment();
-            break;
-        case 3:
-            fragment = new CommunityFragment();
-            break;
-        case 4:
-            fragment = new PeopleFragment();
-            break;
-        case 5:
-            fragment = new SettingsFragment();
-            break;
-        default:
-            break;
+	        case 0:
+	            fragment = new HomeFragment();
+	            break;
+	        case 1:
+	            fragment = new EventsFragment();
+	            break;
+	        case 2:
+	            fragment = new CVFragment();
+	            break;
+	        case 3:
+	            fragment = new CommunityFragment();
+	            break;
+	        case 4:
+	            fragment = new PeopleFragment();
+	            break;
+	        case 5:
+	            fragment = new SettingsFragment();
+	            break;
+	        default:
+	            break;
         }
  
         if (fragment != null) {
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
-            mDrawerList.setItemChecked(position, true);
-            mDrawerList.setSelection(position);
-            setTitle(navMenuTitles[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
+            drawerList.setItemChecked(position, true);
+            drawerList.setSelection(position);
+            this.setTitle(navMenuTitles[position]);
+            drawerLayout.closeDrawer(drawerList);
         } else {
             Log.e("MainActivity", "Error in creating fragment");
         }
@@ -179,46 +172,45 @@ public class MainActivity extends Activity {
 	
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
+        if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         switch (item.getItemId()) {
-        case R.id.action_settings:
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
+	        case R.id.action_settings:
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
         }
     }
- 
-    /***
+    
+    /**
      * Called when invalidateOptionsMenu() is triggered
      */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // if menu is opened, hide the action items
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+        boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
+        menu.findItem(R.id.action_settings).setVisible(drawerOpen ^ true);
         return super.onPrepareOptionsMenu(menu);
     }
- 
+
     @Override
     public void setTitle(CharSequence title) {
-        mTitle = title;
+        this.title = title;
         ActionBar actionBar = getActionBar();
-        actionBar.setTitle(mTitle);
+        actionBar.setTitle(title);
     }
- 
- 
+    
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        mDrawerToggle.syncState();
+        drawerToggle.syncState();
     }
- 
+    
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
     }
     
 }

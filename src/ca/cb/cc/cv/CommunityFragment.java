@@ -9,8 +9,6 @@ import android.view.ViewGroup;
  
 public class CommunityFragment extends Fragment {
      
-    public CommunityFragment(){}
-     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -19,4 +17,5 @@ public class CommunityFragment extends Fragment {
         
         return rootView;
     }
+    
 }
