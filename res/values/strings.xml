@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CB App</string>
+    <string name="app_name">Colonel By Application</string>
     <string name="action_settings">Settings</string>
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
@@ -21,8 +21,8 @@
         <item >Home</item>
         <item >Events</item>
         <item >Cougar Vision</item>
-        <item >Community</item>
-        <item >People</item>
+        <item >School Events</item>
+        <item >Removable Item</item>
         <item >Settings</item>
     </string-array>
      
