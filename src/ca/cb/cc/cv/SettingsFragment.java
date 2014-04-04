@@ -8,6 +8,8 @@ import android.view.ViewGroup;
  
 public class SettingsFragment extends Fragment {
      
+    public SettingsFragment(){}
+     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -16,5 +18,4 @@ public class SettingsFragment extends Fragment {
           
         return rootView;
     }
-    
 }

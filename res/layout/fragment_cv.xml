@@ -3,12 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
      
-    <TextView
-        android:id="@+id/txtLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textSize="15sp"
-        android:text="@string/title_fragment_cv"/>
-     
+	<ListView
+        android:id="@+id/list_cvlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:divider="@drawable/list_divider"
+        android:dividerHeight="1dp"  
+        android:listSelector="@drawable/list_selector"/>
+
 </RelativeLayout>

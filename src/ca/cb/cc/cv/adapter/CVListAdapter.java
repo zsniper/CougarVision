@@ -1,7 +1,7 @@
 package ca.cb.cc.cv.adapter;
 
 import ca.cb.cc.cv.R;
-import ca.cb.cc.cv.model.NavDrawerItem;
+import ca.cb.cc.cv.model.CVListItem;
  
 import java.util.ArrayList;
  
@@ -13,25 +13,26 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
  
-public class NavDrawerListAdapter extends BaseAdapter {
+public class CVListAdapter extends BaseAdapter {
      
     private Context context;
-    private ArrayList<NavDrawerItem> navDrawerItems;
+    private ArrayList<CVListItem> CVItems;
      
-    public NavDrawerListAdapter(Context context, ArrayList<NavDrawerItem> navDrawerItems){
+    public CVListAdapter(Context context, ArrayList<CVListItem> CVItems){
         this.context = context;
-        this.navDrawerItems = navDrawerItems;
+        this.CVItems = CVItems;
     }
  
     @Override
     public int getCount() {
-        return navDrawerItems.size();
+        return CVItems.size();
     }
  
     @Override
     public Object getItem(int position) {       
-        return navDrawerItems.get(position);
+        return CVItems.get(position);
     }
  
     @Override
@@ -44,24 +45,14 @@ public class NavDrawerListAdapter extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.drawer_list_item, null);
+            convertView = mInflater.inflate(R.layout.cv_list_item, null);
         }
           
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
-        TextView txtCount = (TextView) convertView.findViewById(R.id.counter);
           
-        imgIcon.setImageResource(navDrawerItems.get(position).getIcon());        
-        txtTitle.setText(navDrawerItems.get(position).getTitle());
-         
-        // displaying count
-        // check whether it set visible or not
-        if(navDrawerItems.get(position).getCounterVisibility()){
-            txtCount.setText(navDrawerItems.get(position).getCount());
-        }else{
-            // hide the counter view
-            txtCount.setVisibility(View.GONE);
-        }
+        imgIcon.setImageResource(CVItems.get(position).getPreview());        
+        txtTitle.setText(CVItems.get(position).getTitle());
          
         return convertView;
     }

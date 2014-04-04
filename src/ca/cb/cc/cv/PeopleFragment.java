@@ -8,6 +8,8 @@ import android.view.ViewGroup;
  
 public class PeopleFragment extends Fragment {
      
+    public PeopleFragment(){}
+     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -16,5 +18,4 @@ public class PeopleFragment extends Fragment {
           
         return rootView;
     }
-    
 }

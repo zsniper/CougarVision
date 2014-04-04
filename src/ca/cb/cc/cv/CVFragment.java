@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
  
 public class CVFragment extends Fragment {
-    
+     
+    public CVFragment(){}
+     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -16,5 +18,4 @@ public class CVFragment extends Fragment {
           
         return rootView;
     }
-    
 }

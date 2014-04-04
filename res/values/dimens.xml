@@ -4,5 +4,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="actionbar_textsize">21sp</dimen>
+    <dimen name="menuitem_textsize">17sp</dimen>
 
 </resources>
