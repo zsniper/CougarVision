@@ -17,11 +17,11 @@
  
    <ca.cb.cc.cv.views.TextViewF
         android:id="@+id/title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_toRightOf="@id/icon"
-        android:layout_centerVertical="true"
-        android:textSize="@dimen/menuitem_textsize"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
         android:textColor="@color/menu_item_title"
         android:gravity="center_vertical"
         android:paddingRight="40dp"/>

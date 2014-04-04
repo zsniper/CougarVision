@@ -42,7 +42,6 @@ public final class R {
          */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
-        public static final int menuitem_textsize=0x7f050003;
     }
     public static final class drawable {
         public static final int actionbar=0x7f020000;
@@ -64,12 +63,11 @@ public final class R {
         public static final int overlay_noise=0x7f020010;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0008;
+        public static final int action_settings=0x7f0a0007;
         public static final int counter=0x7f0a0005;
         public static final int drawer_layout=0x7f0a0000;
         public static final int frame_container=0x7f0a0001;
         public static final int icon=0x7f0a0003;
-        public static final int list_cvlist=0x7f0a0007;
         public static final int list_slidermenu=0x7f0a0002;
         public static final int title=0x7f0a0004;
         public static final int txtLabel=0x7f0a0006;

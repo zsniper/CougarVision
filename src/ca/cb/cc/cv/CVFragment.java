@@ -8,8 +8,6 @@ import android.view.ViewGroup;
  
 public class CVFragment extends Fragment {
      
-    public CVFragment(){}
-     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
